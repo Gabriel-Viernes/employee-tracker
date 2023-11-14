@@ -11,7 +11,7 @@ function view (db, option) {
                 }
             })
             break;
-        case 'View all roles'
+        case 'View all roles':
 
     }
 }

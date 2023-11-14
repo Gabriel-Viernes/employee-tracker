@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
-const db = require('./js/query.js')
+const query = require('./js/query.js')
 
 const db = mysql.createConnection(
     {
@@ -28,7 +28,42 @@ function uiStart () {
                 'Add an employee',
                 'Update an employee role'
             ]
+        },
+        {   
+            type:'input',
+            message:'Please enter the department name',
+            name: 'department_name',
+            when: (answers) => {
+                if(answers.menuSelect === 'Add a department') {
+                    return true;
+                }
+
+            }
+        },
+        {
+            type:'input',
+            message:'Please enter the name of the role',
+            name:'role_name',
+            when: (answers) => {
+                if (answers.menuSelect === 'Add a role') {
+                    return true;
+                }
+
+            }
+        },
+        {
+            type:'input',
+            message:"Please enter the employee's name",
+            name:'employee_name',
+            when: (answers) => {
+                if(answers.menuSelect === 'Add an employee') {
+                    return true;
+                }
+
+            }
         }
-    ])
+    ]).then((answers) => {
+
+    })
 }
 uiStart()
