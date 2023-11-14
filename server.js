@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
-const db = require('./js/query.js')
+const query = require('./js/query.js')
 
 const db = mysql.createConnection(
     {
@@ -12,23 +12,25 @@ const db = mysql.createConnection(
     console.log(`Connected to database`)
 )
 
+query.view(db, "View all departments")
 
-function uiStart () {
-    inquirer.prompt([
-        {
-            type:'list',
-            message:'What would you like to do?',
-            name:'menuSelect',
-            choices: [
-                'View all departments',
-                'View all roles',
-                'View all employees',
-                'Add a department',
-                'Add a role',
-                'Add an employee',
-                'Update an employee role'
-            ]
-        }
-    ])
-}
-uiStart()
+
+// function uiStart () {
+//     inquirer.prompt([
+//         {
+//             type:'list',
+//             message:'What would you like to do?',
+//             name:'menuSelect',
+//             choices: [
+//                 'View all departments',
+//                 'View all roles',
+//                 'View all employees',
+//                 'Add a department',
+//                 'Add a role',
+//                 'Add an employee',
+//                 'Update an employee role'
+//             ]
+//         }
+//     ])
+// }
+// uiStart()
