@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS employees_db;
 USE employees_db;
 CREATE TABLE department(
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    name VARCHAR(30)
+    name VARCHAR(30) UNIQUE
 );
 
 CREATE TABLE role(
