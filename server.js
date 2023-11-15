@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const query = require('./js/query.js')
 
+
 const db = mysql.createConnection(
     {
         host:'localhost',
@@ -168,25 +169,4 @@ function uiStart () {
 
 }
 uiStart()
-
-
-// function uiStart () {
-//     inquirer.prompt([
-//         {
-//             type:'list',
-//             message:'What would you like to do?',
-//             name:'menuSelect',
-//             choices: [
-//                 'View all departments',
-//                 'View all roles',
-//                 'View all employees',
-//                 'Add a department',
-//                 'Add a role',
-//                 'Add an employee',
-//                 'Update an employee role'
-//             ]
-//         }
-//     ])
-// }
-// uiStart()
 

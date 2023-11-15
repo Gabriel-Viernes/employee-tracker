@@ -68,7 +68,7 @@ function add (db, option, answers) {
                     console.log('Something went wrong!')
                     console.log(err)
                 } else {
-                    console.log('Role added')
+                    console.log('Department added')
                 }
             })
             break;
@@ -80,7 +80,9 @@ function add (db, option, answers) {
                 if (err) {
                     console.log('Something went wrong!')
                     console.log(err)
-                } 
+                } else {
+                    console.log('Role added')
+                }
             })
             break;
         case 'Add an employee':
@@ -91,7 +93,9 @@ function add (db, option, answers) {
                 if (err) {
                     console.log('Something went wrong!')
                     console.log(err)
-                } 
+                } else {
+                    console.log('Employee added')
+                }
             })
             break;
     }
@@ -109,5 +113,4 @@ module.exports = {
     add,
     update
 }
-console.log(module.exports)
 
