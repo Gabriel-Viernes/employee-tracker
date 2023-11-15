@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const query = require('./js/query.js')
 
-
+// creates a connection to sql database
 const db = mysql.createConnection(
     {
         host:'localhost',
@@ -12,7 +12,7 @@ const db = mysql.createConnection(
     },
     console.log(`Connected to database`)
 )
-
+// prompts user for input and asks different questions based on user's responses
 function uiStart () {
     inquirer.prompt([
         {
@@ -139,6 +139,7 @@ function uiStart () {
             }
         },
     ]).then((answers) => {
+        // calls different functions from query.js based on user responses to display data or modify it
         switch(answers.menuSelect) {
             case 'View all departments':
                 query.view(db, answers.menuSelect)

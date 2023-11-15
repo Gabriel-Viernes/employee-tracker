@@ -1,6 +1,7 @@
 const mysql = require('mysql2')
 
 function view (db, option) {
+    // this switch displays different tables based on input from the user
     switch(option) {
         case `View all departments`:
             db.query(`SELECT * FROM department`,(err, result) => {
@@ -9,6 +10,7 @@ function view (db, option) {
                     console.debug(err)
                 } else {
                     if(result.length === 0) {
+                        // If a table is empty, Table empty! is logged instead
                         console.log('\n')
                         console.log('Table empty!')
                     } else {
@@ -58,6 +60,7 @@ function view (db, option) {
 
 
 function add (db, option, answers) {
+    // this switch adds different parameters to different tables based on user input, then logs a confirmation
     switch(option) {
         case 'Add a department':
             db.query(`
@@ -102,6 +105,7 @@ function add (db, option, answers) {
 }
 
 function update(db, answers) {
+    // updates employee's role based on input from user
     db.query(`
     UPDATE employee
     SET role_id = '${answers.employee_update_role_id}'
