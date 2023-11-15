@@ -12,9 +12,6 @@ const db = mysql.createConnection(
     console.log(`Connected to database`)
 )
 
-query.view(db, "View all departments")
-
-
 function uiStart () {
     inquirer.prompt([
         {
@@ -67,7 +64,7 @@ function uiStart () {
         {
             type:'input',
             message:'Please enter the department id of the role',
-            name:'role_title',
+            name:'role_department_id',
             when: (answers) => {
                 if (answers.menuSelect === 'Add a role') {
                     return true;
@@ -141,8 +138,34 @@ function uiStart () {
             }
         },
     ]).then((answers) => {
-
+        switch(answers.menuSelect) {
+            case 'View all departments':
+                query.view(db, answers.menuSelect)
+                break;
+            case 'View all roles':
+                query.view(db, answers.menuSelect)
+                break;
+            case 'View all employees':
+                query.view(db, answers.menuSelect)
+                break;
+            case 'Add a department':
+                query.add(db, answers.menuSelect, answers)
+                break;
+            case 'Add a role':
+                query.add(db, answers.menuSelect, answers)
+                break;
+            case 'Add an employee':
+                query.add(db, answers.menuSelect, answers)
+                break;
+            case 'Update an employee role':
+                query.update(db, answers)
+                break;
+        }
+    }).then(() => {
+        console.log('\n')
+        uiStart()
     })
+
 }
 uiStart()
 
