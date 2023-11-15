@@ -1,8 +1,14 @@
 CREATE DATABASE IF NOT EXISTS employees_db;
 USE employees_db;
+DROP TABLE employee;
+DROP TABLE role;
+DROP TABLE department;
+
+
+
 CREATE TABLE department(
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    name VARCHAR(30)
+    name VARCHAR(30) UNIQUE
 );
 
 CREATE TABLE role(
@@ -18,5 +24,7 @@ CREATE TABLE employee(
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     role_id INT,
-    FOREIGN KEY(role_id) REFERENCES department(id)
-)
+    FOREIGN KEY(role_id) REFERENCES role(id),
+    manager_id INT,
+    FOREIGN KEY(manager_id) REFERENCES employee(id)
+);
